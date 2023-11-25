@@ -7,13 +7,6 @@ services:
     container_name: mongodb
     networks:
       - roboshop
-  catalogue:
-    image: catalogue:v1
-    container_name: catalogue
-    networks:
-    - roboshop
-    depends_on:
-    - mongodb
   redis:
     image: redis
     container_name: redis
@@ -27,6 +20,13 @@ services:
     depends_on:
       - mongodb
       - redis
+  catalogue:
+    image: catalogue:v1
+    container_name: catalogue
+    networks:
+    - roboshop
+    depends_on:
+    - mongodb    
   web:
     image: web:v1
     container_name: web
