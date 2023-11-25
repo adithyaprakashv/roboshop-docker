@@ -1,21 +1,14 @@
 networks:
   roboshop:
     driver: bridge
-volumes:
-  mongodb:
-  redis:
-  mysql:
-  rabbitmq:
 services:
   mongodb:
+    image: mongodb:v1
     container_name: mongodb
     networks:
       - roboshop
-    volumes:
-    - source: mongodb
-      target: /data/db
-      type: volume
   catalogue:
+    image: catalogue:v1
     container_name: catalogue
     networks:
     - roboshop
@@ -26,11 +19,8 @@ services:
     container_name: redis
     networks:
       - roboshop
-    volumes:
-    - source: redis
-      target: /data
-      type: volume
   user:
+    image: user:v1
     container_name: user
     networks:
       - roboshop
