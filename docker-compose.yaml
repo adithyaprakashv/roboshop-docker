@@ -1,0 +1,39 @@
+networks:
+  roboshop:
+    driver: bridge
+volumes:
+  mongodb:
+  redis:
+  mysql:
+  rabbitmq:
+services:
+  mongodb:
+    container_name: mongodb
+    networks:
+      - roboshop
+    volumes:
+    - source: mongodb
+      target: /data/db
+      type: volume
+  catalogue:
+    container_name: catalogue
+    networks:
+    - roboshop
+    depends_on:
+    - mongodb
+  redis:
+    image: redis
+    container_name: redis
+    networks:
+      - roboshop
+    volumes:
+    - source: redis
+      target: /data
+      type: volume
+  user:
+    container_name: user
+    networks:
+      - roboshop
+    depends_on:
+      - mongodb
+      - redis
