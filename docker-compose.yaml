@@ -36,12 +36,12 @@ services:
     - redis
     - catalogue
   mysql:
-    image: joindevops/mysql:v1
+    image: adithyapraksh/mysql:v1
     container_name: mysql
     networks:
       - roboshop
   shipping:
-    image: joindevops/shipping:v1
+    image: adithyapraksh/shipping:v1
     container_name: shipping
     networks:
       - roboshop
@@ -57,7 +57,7 @@ services:
     - RABBITMQ_DEFAULT_USER=roboshop
     - RABBITMQ_DEFAULT_PASS=roboshop123
   payment:
-    image: joindevops/payment:v1
+    image: adithyapraksh/payment:v1
     container_name: payment
     networks:
       - roboshop
