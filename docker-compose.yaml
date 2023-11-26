@@ -76,4 +76,6 @@ services:
       - catalogue
       - user
       - cart
+      - shipping
+      - payment
   
